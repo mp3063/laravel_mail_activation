@@ -14,7 +14,7 @@
   },
   "autoload": {
     "psr-4": {
-      "mp3063\\MailActivation\\": "mail_activation/src/"
+      "mp3063\\MailActivation\\": "src/"
     }
   }
 }
