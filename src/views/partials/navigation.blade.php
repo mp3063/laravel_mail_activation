@@ -8,7 +8,7 @@
             </button>
             <a class="navbar-brand hidden-xs hidden-sm" href="#">
 
-                BAND MANAGEMENT APP
+                Mail Activation Template
 
             </a>
         </div>
