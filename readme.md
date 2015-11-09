@@ -17,11 +17,13 @@ MAIL_PASSWORD=???
 MAIL_ENCRYPTION=ssl
 ```
 In config/mail.php add your mail and name:
+```php
 'from' => ['address' => 'yourmail@123.com', 'name' => 'Your Name'],
-
+```
 In app/User.php file(MODEL) to $fillable array add two more columns to look like this:
+```php
 protected $fillable = [ 'name', 'email', 'password', 'code', 'active' ];
-
+```
 ## Install
 
 Require this package with composer using the following command:
