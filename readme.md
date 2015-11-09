@@ -36,7 +36,6 @@ composer update
 
 Run:
 php artisan vendor:publish
-
 This will copy migration file in database/migrations
 
 Run:
@@ -44,4 +43,4 @@ php artisan migrate
 
 ## End
 
-If you done all this steps you should be good to go! Now you just have to make all views for different routes. If you go to vendor/mp3063/mail-activation/src/views you have all views if you have to copy them in your resources/views folder. I did't want to publish them... You just have to add in public/assets directory bootstrap css and javascript files!!!
+If you done all this steps you should be good to go! Now you just have to make all views for different routes. If you go to vendor/mp3063/mail-activation/src/views you have all views if you want to copy them in your resources/views folder. I did't want to publish them... You just have to add in public/assets directory bootstrap css and javascript files!!!
