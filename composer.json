@@ -8,7 +8,6 @@
       "email": "mp4065@gmail.com"
     }
   ],
-  "minimum-stability": "dev",
   "require": {
     "php": ">=5.5"
   },
