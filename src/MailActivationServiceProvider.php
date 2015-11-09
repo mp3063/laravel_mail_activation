@@ -14,9 +14,7 @@ class MailActivationServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->publishes( [ __DIR__
-                            . '/controllers/'        => base_path( '/app/Http/Controllers/Auth' ),
-                            __DIR__
-                            . '/migrations/'         => base_path( '/database/migrations' ) ] );
+                            . '/migrations/' => base_path( '/database/migrations' ) ] );
     }
 
 
