@@ -46,4 +46,4 @@ php artisan migrate
 ```
 ## End
 
-If you done all this steps you should be good to go! Now you just have to make all views for different routes. If you go to vendor/mp3063/mail-activation/src/views you have all views if you want to copy them in your resources/views folder. Also in vendor/mp3063/mail-activation/src/public directory you have assets folder for that particular views. You may copy that folder in your public dir. I did't want to publish them... Or just make your views (see Laravel documentation). All functionality and routes made by Laravel are preserved! 
+If you done all this steps you should be good to go! Now you just have to make all views for different routes. If you go to vendor/mp3063/mail-activation/src/views you have all views if you want to copy them in your resources/views folder. Also in vendor/mp3063/mail-activation/src/public directory you have assets folder for that particular views. You may copy that folder in your public dir and try route localhost:8888/auth/register. I did't want to publish them... Or just make your views (see Laravel documentation). All functionality and routes made by Laravel are preserved! 
