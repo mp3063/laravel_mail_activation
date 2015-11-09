@@ -1,0 +1,22 @@
+.repertoar-div {
+    border: solid thin #5d5d5d;
+    border-radius: 5px;
+    width: 24%;
+    margin: 0.5%;
+    padding: 5px;
+    background-color: rgba(60, 98, 95, .5);
+    box-shadow: #00ee00 -3px 3px 10px 1px;
+}
+
+.repertoar-div:hover{
+    cursor: pointer;
+}
+
+.highlight {
+    background-color: rgba(0, 237, 0, .8);
+    text-align: center;
+    color: #fff9c0;
+    text-shadow: red -1px 1px 5px;
+    border: solid thin rgba(49,49,49,.4);
+    box-shadow: #00ee00 -3px 1px 10px 1px;
+}
