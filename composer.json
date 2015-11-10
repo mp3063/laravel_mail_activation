@@ -1,6 +1,13 @@
 {
   "name": "mp3063/mail-activation",
   "description": "Provides easy laravel auth with mail activation!",
+  "keywords": [
+    "laravel",
+    "mail",
+    "activation",
+    "auth",
+    "token"
+  ],
   "license": "MIT",
   "authors": [
     {
@@ -8,7 +15,7 @@
       "email": "mp4065@gmail.com"
     }
   ],
-  "minimum-stability": "stable",
+  "minimum-stability": "dev",
   "require": {
     "php": ">=5.5.9"
   },
