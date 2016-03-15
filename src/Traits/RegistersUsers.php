@@ -69,22 +69,9 @@ trait RegistersUsers
             );
         }
         $user = $this->create($request->all());
-        Auth::guard($this->getGuard())->login($user);
         ActivationDependencies::mailRegistration($user);
         
         return redirect('/');
-    }
-    
-    
-    
-    /**
-     * Get the guard to be used during registration.
-     *
-     * @return string|null
-     */
-    protected function getGuard()
-    {
-        return property_exists($this, 'guard') ? $this->guard : null;
     }
     
 }
