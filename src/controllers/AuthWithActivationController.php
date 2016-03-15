@@ -10,7 +10,7 @@ use Validator;
 
 class AuthWithActivationController extends Controller
 {
-
+    
     /*
 |--------------------------------------------------------------------------
 | Registration & Login Controller
@@ -23,8 +23,10 @@ class AuthWithActivationController extends Controller
 */
     use AuthenticatesUsers, RegistersUsers, ThrottlesLogins;
     
-    
     protected $redirectTo = '/';
+    
+    
+    
     /**
      * Create a new authentication controller instance.
      *
@@ -34,9 +36,9 @@ class AuthWithActivationController extends Controller
     {
         $this->middleware($this->guestMiddleware(), ['except' => 'logout']);
     }
-
-
-
+    
+    
+    
     /**
      * Get a validator for an incoming registration request.
      *
@@ -44,15 +46,20 @@ class AuthWithActivationController extends Controller
      *
      * @return \Illuminate\Contracts\Validation\Validator
      */
-    protected function validator( array $data )
+    protected function validator(array $data)
     {
-        return Validator::make( $data, [ 'name'     => 'required|max:255',
-                                         'email'    => 'required|email|max:255|unique:users',
-                                         'password' => 'required|confirmed|min:6', ] );
+        return Validator::make(
+            $data,
+            [
+                'name'     => 'required|max:255',
+                'email'    => 'required|email|max:255|unique:users',
+                'password' => 'required|confirmed|min:6',
+            ]
+        );
     }
-
-
-
+    
+    
+    
     /**
      * Create a new user instance after a valid registration.
      *
@@ -60,12 +67,16 @@ class AuthWithActivationController extends Controller
      *
      * @return User
      */
-    protected function create( array $data )
+    protected function create(array $data)
     {
-        return User::create( [ 'name'     => $data['name'],
-                               'email'    => $data['email'],
-                               'password' => bcrypt( $data['password'] ),
-                               'code'     => str_random( 60 ),
-                               'active'   => 0 ] );
+        return User::create(
+            [
+                'name'     => $data['name'],
+                'email'    => $data['email'],
+                'password' => bcrypt($data['password']),
+                'code'     => str_random(60),
+                'active'   => 0,
+            ]
+        );
     }
 }
