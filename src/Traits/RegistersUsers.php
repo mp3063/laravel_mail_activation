@@ -2,6 +2,7 @@
 namespace mp3063\MailActivation\Traits;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 trait RegistersUsers
 {
