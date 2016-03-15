@@ -5,7 +5,6 @@ use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
-use mp3063\MailActivation\Traits\AuthenticatesAndRegistersUsers;
 use mp3063\MailActivation\Traits\RegistersUsers;
 use Validator;
 
