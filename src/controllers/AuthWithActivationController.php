@@ -4,7 +4,7 @@ namespace mp3063\MailActivation\controllers;
 use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
-use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use mp3063\MailActivation\Traits\AuthenticatesAndRegisterUsers;
 use Validator;
 
 class AuthWithActivationController extends Controller
@@ -21,7 +21,7 @@ class AuthWithActivationController extends Controller
 |
 */
     
-    use AuthenticatesAndRegistersUsers, ThrottlesLogins;
+    use AuthenticatesAndRegisterUsers, ThrottlesLogins;
     
     protected $redirectTo = '/';
     
