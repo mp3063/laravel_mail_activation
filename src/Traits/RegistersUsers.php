@@ -69,9 +69,17 @@ trait RegistersUsers
             );
         }
         $user = $this->create($request->all());
+        Auth::guard($this->getGuard());
         ActivationDependencies::mailRegistration($user);
         
         return redirect('/');
+    }
+    
+    
+    
+    protected function getGuard()
+    {
+        return property_exists($this, 'guard') ? $this->guard : null;
     }
     
 }
