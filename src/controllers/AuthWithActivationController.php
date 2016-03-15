@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
+use mp3063\MailActivation\Traits\AuthenticatesAndRegistersUsers;
 use mp3063\MailActivation\Traits\RegistersUsers;
 use Validator;
 
@@ -22,9 +23,9 @@ class AuthWithActivationController extends Controller
 |
 */
     use AuthenticatesUsers, RegistersUsers, ThrottlesLogins;
-
-
-
+    
+    
+    protected $redirectTo = '/';
     /**
      * Create a new authentication controller instance.
      *
@@ -32,7 +33,7 @@ class AuthWithActivationController extends Controller
      */
     public function __construct()
     {
-        $this->middleware( 'guest', [ 'except' => 'getLogout' ] );
+        $this->middleware($this->guestMiddleware(), ['except' => 'logout']);
     }
 
 
