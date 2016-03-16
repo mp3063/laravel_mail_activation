@@ -13,7 +13,7 @@ trait ActivationDependencies
     public function getActivate($code)
     {
         if (self::registerCheck($code)) {
-            return Redirect::to('/')->with('status',
+            return Redirect::to('/home')->with('status',
                     'Your account was activated. You logged in.'
                 );
         }
@@ -47,7 +47,7 @@ trait ActivationDependencies
         Mail::queue(
             'emails.auth.activate',
             [
-                'link' => URL::to('/auth/activate', $user->code),
+                'link' => URL::to('/activate', $user->code),
                 'name' => $user->name,
             ],
             function ($message) use ($user) {

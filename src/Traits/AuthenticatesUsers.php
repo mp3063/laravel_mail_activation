@@ -139,7 +139,7 @@ trait AuthenticatesUsers
             );
         }
         
-        return redirect()->intended($this->redirectPath());
+        return redirect('/home');
     }
     
     

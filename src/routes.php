@@ -7,7 +7,7 @@ Route::group(
         // Authentication Routes...
         Route::get('login', 'mp3063\MailActivation\controllers\AuthWithActivationController@showLoginForm');
         Route::post('login', 'mp3063\MailActivation\controllers\AuthWithActivationController@postLogin');
-        Route::get('logout', 'mp3063\MailActivation\controllers\AuthWithActivationController@getLogout');
+        Route::get('logout', 'mp3063\MailActivation\controllers\AuthWithActivationController@logout');
     
         // Registration Routes...
         Route::get('register', 'mp3063\MailActivation\controllers\AuthWithActivationController@showRegistrationForm');
