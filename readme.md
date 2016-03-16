@@ -1,6 +1,6 @@
-## Easy Laravel 5.3 Auth with mail activation
+## _Easy Laravel 5.3 Auth with mail activation_
 
-### Preparations
+### _Preparations_
 
 In .env file add your credentials, for example:
 ```php
@@ -20,36 +20,14 @@ In config/mail.php add your mail and name:
 ```php
 'from' => ['address' => 'yourmail@123.com', 'name' => 'Your Name'],
 ```
-In app/User.php file(MODEL) to $fillable array add two more columns to look like this:
-```php
-protected $fillable = [ 'name', 'email', 'password', 'code', 'active' ];
-```
 
-These will install all necessary views into Resource folder. Run artisan command:
+Run artisan command:
 ```bash
 php artisan make:auth
 ```
-Make shure to erase following line from app/Http/routes.php:
-```bash
-Route::auth();
-```
-Your routes.php file should look like this:
-```bash
-<?php
-Route::get(
-    '/',
-    function () {
-        return view('welcome');
-    }
-);
-Route::group(
-    ['middleware' => 'web'],
-    function () {
-        Route::get('/home', 'HomeController@index');
-    }
-);
-```
-## Install
+>These will install all necessary views into Resource folder and routes into routes.php
+***
+## _Installation_
 
 Require this package with composer using the following command:
 ```bash
@@ -63,7 +41,7 @@ Run:
 ```bash
 php artisan vendor:publish
 ```
->This will copy migration file in database/migrations, and activate.blade.php in resources/emails
+>This will copy migration file in database/migrations, activate.blade.php in resources/emails, Users.php into app/Users.php, and routes.php into app/Http/routes.php. **If you have any prepared routes or User model this will ERASE existing!!!**
 
 Run:
 ```bash
