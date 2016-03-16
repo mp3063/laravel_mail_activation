@@ -14,11 +14,11 @@ class MailActivationServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->publishes([
-                __DIR__.'/migrations/' => base_path('/database/migrations'),
-                __DIR__.'/views/'      => base_path('/resources/views'),
-                __DIR__.'/routes/'     => base_path('/app/Http'),
-                __DIR__.'/publish/'    => base_path('/app'),
-            ]);
+            __DIR__.'/migrations/'        => base_path('/database/migrations'),
+            __DIR__.'/views/'             => base_path('/resources/views'),
+            __DIR__.'/publish/routes.php' => app_path('/Http/routes.php'),
+            __DIR__.'/publish/User.php'   => app_path('/User.php'),
+        ]);
     }
     
     
