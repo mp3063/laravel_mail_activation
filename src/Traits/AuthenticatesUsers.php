@@ -154,12 +154,12 @@ trait AuthenticatesUsers
     protected function sendFailedLoginResponse(Request $request)
     {
         return redirect()->back()->withInput(
-                $request->only($this->loginUsername(), 'remember')
-            )->withErrors(
-                [
-                    $this->loginUsername() => $this->getFailedLoginMessage(),
-                ]
-            );
+            $request->only($this->loginUsername(), 'remember')
+        )->withErrors(
+            [
+                $this->loginUsername() => $this->getFailedLoginMessage(),
+            ]
+        );
     }
     
     
@@ -210,8 +210,9 @@ trait AuthenticatesUsers
      */
     public function logout()
     {
-        Auth::guard($this->getGuard())->logout();
-        
+        //        Auth::guard($this->getGuard())->logout();
+        Auth::logout();
+
         return redirect(
             property_exists($this, 'redirectAfterLogout') ?
                 $this->redirectAfterLogout : '/'

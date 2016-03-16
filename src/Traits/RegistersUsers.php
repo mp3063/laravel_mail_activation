@@ -73,7 +73,7 @@ trait RegistersUsers
         Auth::guard($this->getGuard());
         ActivationDependencies::mailRegistration($user);
         
-        return redirect('/');
+        return redirect('/')->with('status','We send you activation mail! Click on a link to activate your account!');
     }
     
     

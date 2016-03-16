@@ -6,17 +6,17 @@ Route::group(
     function () {
         // Authentication Routes...
         Route::get('login', 'mp3063\MailActivation\controllers\AuthWithActivationController@showLoginForm');
-        Route::post('login', 'mp3063\MailActivation\controllers\AuthWithActivationController@login');
-        Route::get('logout', 'mp3063\MailActivation\controllers\AuthWithActivationController@logout');
+        Route::post('login', 'mp3063\MailActivation\controllers\AuthWithActivationController@postLogin');
+        Route::get('logout', 'mp3063\MailActivation\controllers\AuthWithActivationController@getLogout');
     
         // Registration Routes...
         Route::get('register', 'mp3063\MailActivation\controllers\AuthWithActivationController@showRegistrationForm');
-        Route::post('register', 'mp3063\MailActivation\controllers\AuthWithActivationController@register');
-        Route::get('activate', 'mp3063\MailActivation\controllers\AuthWithActivationController@activate');
+        Route::post('register', 'mp3063\MailActivation\controllers\AuthWithActivationController@postRegister');
+        Route::get('activate/{code}', 'mp3063\MailActivation\controllers\AuthWithActivationController@getActivate');
     
         // Password Reset Routes...
-        Route::get('password/reset/{token?}', 'Auth\PasswordController@showResetForm');
-        Route::post('password/email', 'Auth\PasswordController@sendResetLinkEmail');
-        Route::post('password/reset', 'Auth\PasswordController@reset');
+        Route::get('password/reset/{token?}', 'App\Http\Controllers\Auth\PasswordController@showResetForm');
+        Route::post('password/email', 'App\Http\Controllers\Auth\PasswordController@sendResetLinkEmail');
+        Route::post('password/reset', 'App\Http\Controllers\Auth\PasswordController@reset');
     }
 );

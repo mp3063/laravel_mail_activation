@@ -13,12 +13,12 @@ trait ActivationDependencies
     public function getActivate($code)
     {
         if (self::registerCheck($code)) {
-            return Redirect::to('/')->with(
+            return Redirect::to('/')->with('status',
                     'Your account was activated. You logged in.'
                 );
         }
         
-        return Redirect::to('/auth/login')->with(
+        return Redirect::to('/login')->with('status',
                 'We did\'t activated your account. Try later.'
             );
         
