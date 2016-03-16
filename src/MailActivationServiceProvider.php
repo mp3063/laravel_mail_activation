@@ -13,8 +13,12 @@ class MailActivationServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->publishes( [ __DIR__
-                            . '/migrations/' => base_path( '/database/migrations' ) ] );
+        $this->publishes(
+            [
+                __DIR__.'/migrations/' => base_path('/database/migrations'),
+                __DIR__.'/views/' => base_path('/resources/views'),
+            ]
+        );
     }
 
 
@@ -26,7 +30,9 @@ class MailActivationServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        include __DIR__ . '/routes.php';
-        $this->app->make( 'mp3063\MailActivation\controllers\AuthWithActivationController' );
+        include __DIR__.'/routes.php';
+        $this->app->make(
+            'mp3063\MailActivation\controllers\AuthWithActivationController'
+        );
     }
 }

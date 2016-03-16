@@ -2,14 +2,15 @@
 namespace mp3063\MailActivation\Traits;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 trait RegistersUsers
 {
-
+    
     use ActivationDependencies;
-
-
-
+    
+    
+    
     /**
      * Show the application registration form.
      *
@@ -17,11 +18,27 @@ trait RegistersUsers
      */
     public function getRegister()
     {
-        return view( 'auth.register' );
+        return $this->showRegistrationForm();
     }
-
-
-
+    
+    
+    
+    /**
+     * Show the application registration form.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showRegistrationForm()
+    {
+        if (property_exists($this, 'registerView')) {
+            return view($this->registerView);
+        }
+        
+        return view('auth.register');
+    }
+    
+    
+    
     /**
      * Handle a registration request for the application.
      *
@@ -29,16 +46,41 @@ trait RegistersUsers
      *
      * @return \Illuminate\Http\Response
      */
-    public function postRegister( Request $request )
+    public function postRegister(Request $request)
     {
-        $validator = $this->validator( $request->all() );
-        if ( $validator->fails() ) {
-            $this->throwValidationException( $request, $validator );
-        }
-        $user = $this->create( $request->all() );
-        ActivationDependencies::mailRegistration( $user );
-
-        return redirect( '/' );
+        return $this->register($request);
     }
-
+    
+    
+    
+    /**
+     * Handle a registration request for the application.
+     *
+     * @param  \Illuminate\Http\Request $request
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function register(Request $request)
+    {
+        $validator = $this->validator($request->all());
+        if ($validator->fails()) {
+            $this->throwValidationException(
+                $request,
+                $validator
+            );
+        }
+        $user = $this->create($request->all());
+        Auth::guard($this->getGuard());
+        ActivationDependencies::mailRegistration($user);
+        
+        return redirect('/')->with('status','We send you activation mail! Click on a link to activate your account!');
+    }
+    
+    
+    
+    protected function getGuard()
+    {
+        return property_exists($this, 'guard') ? $this->guard : null;
+    }
+    
 }

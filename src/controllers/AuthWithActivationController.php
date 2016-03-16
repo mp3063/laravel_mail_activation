@@ -3,14 +3,13 @@ namespace mp3063\MailActivation\controllers;
 
 use App\Http\Controllers\Controller;
 use App\User;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
-use mp3063\MailActivation\Traits\RegistersUsers;
+use mp3063\MailActivation\Traits\AuthenticatesAndRegisterUsers;
 use Validator;
 
 class AuthWithActivationController extends Controller
 {
-
+    
     /*
 |--------------------------------------------------------------------------
 | Registration & Login Controller
@@ -21,10 +20,13 @@ class AuthWithActivationController extends Controller
 | a simple trait to add these behaviors. Why don't you explore it?
 |
 */
-    use AuthenticatesUsers, RegistersUsers, ThrottlesLogins;
-
-
-
+    
+    use AuthenticatesAndRegisterUsers, ThrottlesLogins;
+    
+    protected $redirectTo = '/';
+    
+    
+    
     /**
      * Create a new authentication controller instance.
      *
@@ -32,11 +34,11 @@ class AuthWithActivationController extends Controller
      */
     public function __construct()
     {
-        $this->middleware( 'guest', [ 'except' => 'getLogout' ] );
+        $this->middleware($this->guestMiddleware(), ['except' => 'logout']);
     }
-
-
-
+    
+    
+    
     /**
      * Get a validator for an incoming registration request.
      *
@@ -44,15 +46,20 @@ class AuthWithActivationController extends Controller
      *
      * @return \Illuminate\Contracts\Validation\Validator
      */
-    protected function validator( array $data )
+    protected function validator(array $data)
     {
-        return Validator::make( $data, [ 'name'     => 'required|max:255',
-                                         'email'    => 'required|email|max:255|unique:users',
-                                         'password' => 'required|confirmed|min:6', ] );
+        return Validator::make(
+            $data,
+            [
+                'name'     => 'required|max:255',
+                'email'    => 'required|email|max:255|unique:users',
+                'password' => 'required|confirmed|min:6',
+            ]
+        );
     }
-
-
-
+    
+    
+    
     /**
      * Create a new user instance after a valid registration.
      *
@@ -60,12 +67,16 @@ class AuthWithActivationController extends Controller
      *
      * @return User
      */
-    protected function create( array $data )
+    protected function create(array $data)
     {
-        return User::create( [ 'name'     => $data['name'],
-                               'email'    => $data['email'],
-                               'password' => bcrypt( $data['password'] ),
-                               'code'     => str_random( 60 ),
-                               'active'   => 0 ] );
+        return User::create(
+            [
+                'name'     => $data['name'],
+                'email'    => $data['email'],
+                'password' => bcrypt($data['password']),
+                'code'     => str_random(60),
+                'active'   => 0,
+            ]
+        );
     }
 }
