@@ -17,6 +17,8 @@ class MailActivationServiceProvider extends ServiceProvider
             [
                 __DIR__.'/migrations/' => base_path('/database/migrations'),
                 __DIR__.'/views/' => base_path('/resources/views'),
+                __DIR__.'/publish/routes.php' => base_path('/app/Http'),
+                __DIR__.'/publish/User.php' => base_path('/app'),
             ]
         );
     }
