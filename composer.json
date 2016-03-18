@@ -1,6 +1,5 @@
 {
-  "name": "mp3063/laravel-mail-activation",
-  "replace": {"old/name":"self.version"},
+  "name": "mp3063/mail-activation",
   "description": "Provides easy laravel auth with mail activation!",
   "keywords": [
     "laravel",
