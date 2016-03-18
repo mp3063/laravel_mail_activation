@@ -47,7 +47,7 @@ Route::group(['middleware' => 'web'], function () {
 
 Require this package with composer using the following command:
 ```bash
-composer require mp3063/laravel-mail-activation
+composer require mp3063/mail-activation
 ```
 In config/app.php file add to ServiceProvider array this line:
 ```php
