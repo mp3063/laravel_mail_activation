@@ -29,19 +29,20 @@ These will install all necessary views into Resource folder. Run artisan command
 ```bash
 php artisan make:auth
 ```
-Make shure to erase following line from app/Http/routes.php:
+Make shure to erase following line from routes/web.php or just comment it out:
 ```bash
-Route::auth();
+Auth::routes();
 ```
-Your routes.php file should look like this:
+Your routes/web.php file should look like this:
 ```php
 <?php
 Route::get('/', function () {
     return view('welcome');
 });
-Route::group(['middleware' => 'web'], function () {
-    Route::get('/home', 'HomeController@index');
-});
+
+//Auth::routes();
+
+Route::get('/home', 'HomeController@index');
 ```
 ## Install
 
