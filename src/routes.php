@@ -15,8 +15,9 @@ Route::group(
         Route::get('activate/{code}', 'mp3063\MailActivation\controllers\AuthWithActivationController@getActivate');
     
         // Password Reset Routes...
-        Route::get('password/reset/{token?}', 'App\Http\Controllers\Auth\PasswordController@showResetForm');
-        Route::post('password/email', 'App\Http\Controllers\Auth\PasswordController@sendResetLinkEmail');
-        Route::post('password/reset', 'App\Http\Controllers\Auth\PasswordController@reset');
+        Route::get('password/reset/{token?}', 'App\Http\Controllers\Auth\ResetPasswordController@showResetForm');
+        Route::get('password/email', 'App\Http\Controllers\Auth\ForgotPasswordController@showLinkRequestForm');
+        Route::post('password/email', 'App\Http\Controllers\Auth\ForgotPasswordController@sendResetLinkEmail');
+        Route::post('password/reset', 'App\Http\Controllers\Auth\ResetPasswordController@reset');
     }
 );
