@@ -1,4 +1,4 @@
-## Easy Laravel 5.3 Auth with mail activation
+## Easy Laravel 5.4 Auth with mail activation
 
 ### Preparations
 
@@ -10,11 +10,11 @@ DB_USERNAME=root
 DB_PASSWORD=
 
 MAIL_DRIVER=smtp
-MAIL_HOST=smtp.gmail.com
-MAIL_PORT=465
+MAIL_HOST=mailtrap.io
+MAIL_PORT=2525
 MAIL_USERNAME=your_username
 MAIL_PASSWORD=your_password
-MAIL_ENCRYPTION=ssl
+MAIL_ENCRYPTION=null
 ```
 In config/mail.php add your mail and name:
 ```php
@@ -60,6 +60,22 @@ php artisan vendor:publish
 ```
 >This will copy migration file in database/migrations, and activate.blade.php in resources/emails
 
+
+#####If your application are running MySQL v5.7.7 and higher you do not need to do next step. If you hit this error:
+```bash
+[Illuminate\Database\QueryException]
+SQLSTATE[42000]: Syntax error or access violation: 1071 Specified key was too long; max key length is 767 bytes (SQL: alter table users add unique users_email_unique(email))
+```
+
+#####You need to do this in AppServiceProvider.php file and inside the boot method set a default string length:
+```php
+use Illuminate\Support\Facades\Schema;
+
+public function boot()
+{
+    Schema::defaultStringLength(191);
+}
+```
 Run:
 ```bash
 php artisan migrate
