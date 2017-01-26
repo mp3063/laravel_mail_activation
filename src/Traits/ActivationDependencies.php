@@ -44,7 +44,7 @@ trait ActivationDependencies
     
     public static function mailRegistration($user)
     {
-        Mail::queue(
+        Mail::send(
             'emails.auth.activate',
             [
                 'link' => URL::to('/activate', $user->code),
