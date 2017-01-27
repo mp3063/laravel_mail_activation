@@ -52,7 +52,7 @@ composer require mp3063/mail-activation
 ```
 In config/app.php file add to ServiceProvider array this line:
 ```php
-mp3063\MailActivation\MailActivationServiceProvider::class,
+mp3063\LaravelMailActivation\LaravelMailActivationServiceProvider::class,
 ```
 Run:
 ```bash
