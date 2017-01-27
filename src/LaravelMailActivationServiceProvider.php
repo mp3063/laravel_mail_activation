@@ -1,9 +1,9 @@
 <?php
-namespace mp3063\MailActivation;
+namespace mp3063\LaravelMailActivation;
 
 use Illuminate\Support\ServiceProvider;
 
-class MailActivationServiceProvider extends ServiceProvider
+class LaravelMailActivationServiceProvider extends ServiceProvider
 {
     
     /**
@@ -29,6 +29,6 @@ class MailActivationServiceProvider extends ServiceProvider
     public function register()
     {
         include __DIR__.'/routes.php';
-        $this->app->make('mp3063\MailActivation\controllers\AuthWithActivationController');
+        $this->app->make('mp3063\LaravelMailActivation\Controllers\RegisterWithActivation');
     }
 }

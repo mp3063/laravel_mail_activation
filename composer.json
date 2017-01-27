@@ -18,11 +18,11 @@
   "minimum-stability": "dev",
   "require": {
     "php": ">=5.5.9",
-    "laravel/framework": "~5.4.0"
+    "laravel/framework": "5.4.*"
   },
   "autoload": {
     "psr-4": {
-      "mp3063\\MailActivation\\": "src/"
+      "mp3063\\LaravelMailActivation\\": "src/"
     }
   }
 }

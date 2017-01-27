@@ -29,7 +29,7 @@ These will install all necessary views into Resource folder. Run artisan command
 ```bash
 php artisan make:auth
 ```
-Make shure to erase following line from routes/web.php or just comment it out:
+Make shure to erase following line from routes/web.php or just comment it out because routes.php file from package will take place on all routes needed for auth. It's basically same file from Laravel ( changed 3 route to override Laravel methods ):
 ```bash
 Auth::routes();
 ```
@@ -58,9 +58,12 @@ Run:
 ```bash
 php artisan vendor:publish
 ```
->This will copy migration file in database/migrations, and activate.blade.php in resources/emails
+>This will copy migration file in database/migrations, and activate.blade.php in resources/emails/auth
 
-
+Run:
+```bash
+php artisan migrate
+```
 #####If your application are running MySQL v5.7.7 and higher you do not need to do next step. If you hit this error:
 ```bash
 [Illuminate\Database\QueryException]
@@ -76,10 +79,7 @@ public function boot()
     Schema::defaultStringLength(191);
 }
 ```
-Run:
-```bash
-php artisan migrate
-```
+
 ## End
 
 If you done all this steps you should have all views and routes ready for mail-activation! Just start your server and enjoj! All functionality and routes made by Laravel are preserved!

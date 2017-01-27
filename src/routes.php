@@ -1,23 +1,23 @@
 <?php
-use Illuminate\Support\Facades\Route;
-
-Route::group(
-    ['middleware' => ['web']],
-    function () {
-        // Authentication Routes...
-        Route::get('login', 'mp3063\MailActivation\controllers\AuthWithActivationController@showLoginForm');
-        Route::post('login', 'mp3063\MailActivation\controllers\AuthWithActivationController@postLogin');
-        Route::post('logout', 'mp3063\MailActivation\controllers\AuthWithActivationController@logout');
-    
-        // Registration Routes...
-        Route::get('register', 'mp3063\MailActivation\controllers\AuthWithActivationController@showRegistrationForm');
-        Route::post('register', 'mp3063\MailActivation\controllers\AuthWithActivationController@postRegister');
-        Route::get('activate/{code}', 'mp3063\MailActivation\controllers\AuthWithActivationController@getActivate');
-    
-        // Password Reset Routes...
-        Route::get('password/reset/{token?}', 'App\Http\Controllers\Auth\ResetPasswordController@showResetForm');
-        Route::get('password/email', 'App\Http\Controllers\Auth\ForgotPasswordController@showLinkRequestForm');
-        Route::post('password/email', 'App\Http\Controllers\Auth\ForgotPasswordController@sendResetLinkEmail');
-        Route::post('password/reset', 'App\Http\Controllers\Auth\ResetPasswordController@reset');
-    }
-);
+Route::group(['middleware' => 'web'], function () {
+    // Authentication Routes...
+    Route::get('login', 'App\Http\Controllers\Auth\LoginController@showLoginForm')->name('login');
+    Route::post('login', 'mp3063\LaravelMailActivation\Controllers\RegisterWithActivation@login');
+    Route::post('logout', 'App\Http\Controllers\Auth\LoginController@logout')->name('logout');
+    // Registration Routes...
+    Route::get('register', 'App\Http\Controllers\Auth\RegisterController@showRegistrationForm')
+         ->name('register');
+    Route::post('register',
+        'mp3063\LaravelMailActivation\Controllers\RegisterWithActivation@register');
+    Route::get('activate/{code}',
+        'mp3063\LaravelMailActivation\Controllers\RegisterWithActivation@getActivate');
+    // Password Reset Routes...
+    Route::get('password/reset',
+        'App\Http\Controllers\Auth\ForgotPasswordController@showLinkRequestForm')
+         ->name('password.request');
+    Route::post('password/email',
+        'App\Http\Controllers\Auth\ForgotPasswordController@sendResetLinkEmail');
+    Route::get('password/reset/{token}',
+        'App\Http\Controllers\Auth\ResetPasswordController@showResetForm')->name('password.reset');
+    Route::post('password/reset', 'App\Http\Controllers\Auth\ResetPasswordController@reset');
+});
