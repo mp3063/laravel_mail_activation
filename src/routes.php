@@ -3,7 +3,7 @@ Route::group(['middleware' => 'web'], function () {
     // Authentication Routes...
     Route::get('login', 'App\Http\Controllers\Auth\LoginController@showLoginForm')->name('login');
     Route::post('login', 'mp3063\LaravelMailActivation\Controllers\RegisterWithActivation@login');
-    Route::post('logout', 'App\Http\Controllers\Auth\LoginController@logout')->name('logout');
+    Route::get('logout', 'App\Http\Controllers\Auth\LoginController@logout')->name('logout');
     // Registration Routes...
     Route::get('register', 'App\Http\Controllers\Auth\RegisterController@showRegistrationForm')
          ->name('register');
