@@ -1,4 +1,5 @@
-## Easy Laravel 5.4 Auth with mail activation
+## Easy Laravel 5.5 Auth with mail activation
+##### For Laravel 5.4 use version 5.4.2 
 
 ### Preparations
 
@@ -30,7 +31,7 @@ These will install all necessary views into Resource folder. Run artisan command
 php artisan make:auth
 ```
 Make shure to erase following line from routes/web.php or just comment it out because routes.php file from package will take place on all routes needed for auth. It's basically same file from Laravel ( changed 3 route to override Laravel methods ):
-```bash
+```php
 Auth::routes();
 ```
 Your routes/web.php file should look like this:
@@ -65,7 +66,7 @@ Run:
 php artisan migrate
 ```
 #####If your application are running MySQL v5.7.7 and higher you do not need to do next step. If you hit this error:
-```bash
+```php
 [Illuminate\Database\QueryException]
 SQLSTATE[42000]: Syntax error or access violation: 1071 Specified key was too long; max key length is 767 bytes (SQL: alter table users add unique users_email_unique(email))
 ```
