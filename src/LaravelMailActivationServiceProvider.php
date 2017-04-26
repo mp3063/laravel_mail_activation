@@ -1,7 +1,9 @@
 <?php
+
 namespace mp3063\LaravelMailActivation;
 
 use Illuminate\Support\ServiceProvider;
+use mp3063\LaravelMailActivation\Commands\InstallCommand;
 
 class LaravelMailActivationServiceProvider extends ServiceProvider
 {
@@ -14,11 +16,14 @@ class LaravelMailActivationServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->publishes([
-            __DIR__.'/migrations/' => base_path('/database/migrations'),
-            __DIR__.'/views/'      => base_path('/resources/views'),
+            __DIR__ . '/migrations/' => base_path('/database/migrations'),
+            __DIR__ . '/views/'      => base_path('/resources/views'),
+            __DIR__ . '/Controllers' => base_path('/app/Http/Controllers/Auth'),
         ]);
+        if ($this->app->runningInConsole()) {
+            $this->commands([InstallCommand::class]);
+        }
     }
-    
     
     
     /**
@@ -28,7 +33,8 @@ class LaravelMailActivationServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        include __DIR__.'/routes.php';
+        include __DIR__ . '/routes.php';
         $this->app->make('mp3063\LaravelMailActivation\Controllers\RegisterWithActivation');
+        
     }
 }
