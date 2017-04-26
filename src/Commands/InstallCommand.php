@@ -53,7 +53,7 @@ class InstallCommand extends Command
         $filesystem->append(base_path('/routes/web.php'), "\n\nRoutes::auth();\n");
         $this->info('Call Laravel make:auth');
         $this->call('make:auth');
-        $file = base_path('routes/web.php');
+        $file= base_path('routes/web.php');
         file_put_contents($file,
             str_replace('Auth::routes();', 'Routes::auth();', file_get_contents($file)));
         $this->info('Successfully installed!!!');
