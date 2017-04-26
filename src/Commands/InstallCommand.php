@@ -52,9 +52,9 @@ class InstallCommand extends Command
             "\n\nMAIL_FROM_ADDRESS={$mailAddress}\nMAIL_FROM_NAME={$mailFromName}\n");
         $filesystem->append(base_path('/routes/web.php'), "\n\nRoutes::auth();\n");
         $this->info('Call Laravel make:auth');
-        $this->call('make:auth');
+        $this->call('make:auth --views');
         $file = base_path('routes/web.php');
-        str_replace('Auth::routes();', 'Routes::auth();', file_get_contents($file));
+        $filesystem->append($file,'\nRoutes::auth();\n');
         $this->info('Successfully installed!!!');
     }
 }
