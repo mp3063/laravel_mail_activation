@@ -9,7 +9,6 @@ DB_HOST=localhost
 DB_DATABASE=test_mail_activation
 DB_USERNAME=root
 DB_PASSWORD=
-
 MAIL_DRIVER=smtp
 MAIL_HOST=mailtrap.io
 MAIL_PORT=2525
