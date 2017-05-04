@@ -18,11 +18,7 @@ class LaravelMailActivationServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__ . '/migrations/' => base_path('/database/migrations'),
             __DIR__ . '/views/'      => base_path('/resources/views'),
-            __DIR__ . '/Controllers' => base_path('/app/Http/Controllers/Auth'),
         ]);
-        if ($this->app->runningInConsole()) {
-            $this->commands([InstallCommand::class]);
-        }
     }
     
     
